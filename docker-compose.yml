@@ -1,0 +1,35 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    restart: unless-stopped
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: 10.100.3.23 # node340-dev-kube.prg1paas.t-cloud.eu
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: webadmin
+      KC_DB_PASSWORD: SH1HhZR7uf
+      KEYCLOAK_ADMIN: tmpadmin
+      KEYCLOAK_ADMIN_PASSWORD: BezpecneHeslo.123!
+      KC_HOSTNAME: https://dev-mgmt.prg1paas.t-cloud.eu
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY: edge
+      KC_HTTP_ENABLED: "true"
+      #KC_HTTP_RELATIVE_PATH: /keycloak
+      KC_SPI_COOKIE_DEFAULT_SECURE: "false"
+      KC_SPI_COOKIE_SESSION_SECURE: "false"
+      KC_PROXY_HEADERS: "xforwarded"
+      KC_PROXY_ADDRESS_FORWARDING: "true"
+    ports:
+      - "8080:8080"
+    command: start-dev
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+    networks:
+      - keycloak
+networks:
+  keycloak:
+    driver: bridge
+volumes:
+  keycloak_data:
