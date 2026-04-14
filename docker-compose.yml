@@ -12,7 +12,8 @@ services:
       KC_DB_PASSWORD: SH1HhZR7uf
       KEYCLOAK_ADMIN: tmpadmin
       KEYCLOAK_ADMIN_PASSWORD: BezpecneHeslo.123!
-      KC_HOSTNAME: https://dev-mgmt.prg1paas.t-cloud.eu
+      #KC_HOSTNAME: https://dev-mgmt.prg1paas.t-cloud.eu
+      KC_HOSTNAME: dev-mgmt.prg1paas.t-cloud.eu
       KC_HOSTNAME_STRICT: "false"
       KC_PROXY: edge
       KC_HTTP_ENABLED: "true"
@@ -20,7 +21,7 @@ services:
       KC_SPI_COOKIE_DEFAULT_SECURE: "false"
       KC_SPI_COOKIE_SESSION_SECURE: "false"
       KC_PROXY_HEADERS: "xforwarded"
-      KC_PROXY_ADDRESS_FORWARDING: "true"
+      #KC_PROXY_ADDRESS_FORWARDING: "true"
     ports:
       - "8080:8080"
     command: start-dev
